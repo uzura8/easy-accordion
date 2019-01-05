@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accordion Sample</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="accordion.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
+</head>
+<body>
+<div class="container u-mb50">
+<h1 class="h2">Simple Accordion Sample</h1>
+<p class="lead">This accordion sample dose not depend on a specific library.</p>
+
+<section class="u-mt50">
+<h2>Demo</h2>
+<section class="u-mt30">
+  <h3>Simple</h3>
+  <section id="demo-section-simple" class="u-mt20">
+    <a class="js-accordion accordion-header"><!-- is-active class is added here at open -->
+      <label>Accordion1</label>
+      <div class="accordion-icon"><span></span><span></span></div>
+    </a>
+    <ul class="accordion-content"><!-- is-active class is added here at open -->
+      <li>AAAAA</li>
+      <li>BBBBBB</li>
+      <li>CCCCC</li>
+    </ul>
+  </section>
+  <section>
+    <a class="js-accordion accordion-header">
+      <label>Accordion2</label>
+      <div class="accordion-icon"><span></span><span></span></div>
+    </a>
+    <ul class="accordion-content">
+      <li>AAAAA</li>
+      <li>BBBBBB</li>
+      <li>CCCCC</li>
+    </ul>
+  </section>
+  <section>
+    <a class="js-accordion accordion-header">
+      <label>Accordion3</label>
+      <div class="accordion-icon"><span></span><span></span></div>
+    </a>
+    <ul class="accordion-content">
+      <li>AAAAA</li>
+      <li>BBBBBB</li>
+      <li>CCCCC</li>
+    </ul>
+  </section>
+</section>
+<hr>
+
+<section class="u-mt30">
+  <h3>Group</h3>
+  <section id="demo-section-group" class="u-mt20">
+    <ul class="accordion-group">
+      <li>
+        <a class="js-accordion accordion-header" data-group=".accordion-group"><!-- is-active class is added here at open -->
+          <label>Accordion1</label>
+          <div class="accordion-icon"><span></span><span></span></div>
+        </a>
+        <ul class="accordion-content"><!-- is-active class is added here at open -->
+          <li>AAAAA</li>
+          <li>BBBBBB</li>
+          <li>CCCCC</li>
+        </ul>
+      </li>
+      <li>
+        <a class="js-accordion accordion-header" data-group=".accordion-group">
+          <label>Accordion2</label>
+          <div class="accordion-icon"><span></span><span></span></div>
+        </a>
+        <ul class="accordion-content">
+          <li>AAAAA</li>
+          <li>BBBBBB</li>
+          <li>CCCCC</li>
+        </ul>
+      </li>
+      <li>
+        <a class="js-accordion accordion-header" data-group=".accordion-group">
+          <label>Accordion3</label>
+          <div class="accordion-icon"><span></span><span></span></div>
+        </a>
+        <ul class="accordion-content">
+          <li>AAAAA</li>
+          <li>BBBBBB</li>
+          <li>CCCCC</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</section>
+<hr>
+
+<section class="u-mt30">
+  <h3>Free Trigger</h3>
+  <section id="demo-section-free-trigger" class="u-mt20">
+    <ul class="nav nav-pills">
+      <li role="presentation">
+        <a class="js-accordion u-clickable" data-target="accordion1" data-group="accordion-group-demo03">Accordion1</a>
+      </li>
+      <li role="presentation">
+        <a class="js-accordion u-clickable" data-target="accordion2" data-group="accordion-group-demo03">Accordion2</a>
+      </li>
+      <li role="presentation">
+        <a class="js-accordion u-clickable" data-target="accordion3" data-group="accordion-group-demo03">Accordion3</a>
+      </li>
+    </ul>
+    <section id="accordion-group-demo03" class="u-mt20">
+      <div id="accordion1" class="accordion-content">
+        <h4>Accordion1 title</h4>
+        <section>
+          <p>Accordion1 contet.</p>
+        </section>
+      </div>
+      <div id="accordion2" class="accordion-content">
+        <h4>Accordion2 title</h4>
+        <section>
+          <p>Accordion2 contet.</p>
+        </section>
+      </div>
+      <div id="accordion3" class="accordion-content">
+        <h4>Accordion3 title</h4>
+        <section>
+          <p>Accordion3 contet.</p>
+        </section>
+      </div>
+    </section>
+  </section>
+</section>
+<hr>
+
+<section class="u-mt30">
+  <h3>Nested</h3>
+  <section id="demo-section-nested" class="u-mt20">
+    <ul class="accordion-group">
+      <li>
+        <a class="js-accordion accordion-header" data-scroll="1" data-group=".accordion-group">
+          <label>Accordion1</label>
+          <div class="accordion-icon"><span></span><span></span></div>
+        </a>
+        <ul class="accordion-content">
+          <li class="accordion-group">
+            <a class="js-accordion accordion-header" data-group=".accordion-group">
+              <label>Accordion1</label>
+              <div class="accordion-icon"><span></span><span></span></div>
+            </a>
+            <ul class="accordion-content">
+              <li>AAAAA</li>
+              <li>BBBBBB</li>
+              <li>CCCCC</li>
+            </ul>
+            <a class="js-accordion accordion-header" data-group=".accordion-group">
+              <label>Accordion2</label>
+              <div class="accordion-icon"><span></span><span></span></div>
+            </a>
+            <ul class="accordion-content">
+              <li>AAAAA</li>
+              <li>BBBBBB</li>
+              <li>CCCCC</li>
+            </ul>
+            <a class="js-accordion accordion-header" data-group=".accordion-group">
+              <label>Accordion3</label>
+              <div class="accordion-icon"><span></span><span></span></div>
+            </a>
+            <ul class="accordion-content">
+              <li>AAAAA</li>
+              <li>BBBBBB</li>
+              <li>CCCCC</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a class="js-accordion accordion-header" data-scroll="1" data-group=".accordion-group">
+          <label>Accordion2</label>
+          <div class="accordion-icon"><span></span><span></span></div>
+        </a>
+        <ul class="accordion-content">
+          <li>AAAAA</li>
+          <li>BBBBBB</li>
+          <li>CCCCC</li>
+        </ul>
+      </li>
+      <li>
+        <a class="js-accordion accordion-header" data-scroll="1" data-group=".accordion-group">
+          <label>Accordion3</label>
+          <div class="accordion-icon"><span></span><span></span></div>
+        </a>
+        <ul class="accordion-content">
+          <li>AAAAA</li>
+          <li>BBBBBB</li>
+          <li>CCCCC</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</section>
+<hr>
+
+<section class="u-mt30">
+  <h2>Getting statrted</h2>
+  <ul>
+    <li>Set class <code>js-accordion</code>to the accordion trigger element.</li>
+    <li>Set attribute <code>data-target="{{target dom id}}"</code>to the trigger element.</li>
+    <li>Set {{target dom id}} to the accordion content block's id.</li>
+    <li><code>is-active</code> class is added trigger and content block at open.</li>
+    <li>Please define styles for them.</li>
+  </ul>
+  <section>
+    <h4 class="u-mt30">HTML</h4>
+    <p></p>
+    <pre><code class="js-code html" data-target="main-html"></code></pre>
+  </section>
+  <section>
+    <h4 class="u-mt30">JavaScript</h4>
+    <p>Please add below script into the script file loaded commonly.</p>
+    <pre><code class="js-code javascript" data-target="main-script"></code></pre>
+  </section>
+  <section>
+    <h4 class="u-mt30">CSS</h4>
+    <p><code>is-active</code> class is added trigger and content block at open.</p>
+    <p>Please define styles for them.</p>
+  </section>
+</section>
+</div>
+
+<!-- For display sample -->
+<script src="accordion.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script>
+//hljs.initHighlightingOnLoad();
+//document.addEventListener('DOMContentLoaded', function() {
+//  var $code = Array.prototype.slice.call(document.querySelectorAll('.js-code'), 0);
+//  if ($code.length > 0) {
+//    $code.forEach(function ($el) {
+//      var targetId = $el.dataset.target;
+//      if (!targetId)  return;
+//      var $targetEl = document.getElementById(targetId);
+//      if ($targetEl === undefined) return;
+//      $el.innerText = $targetEl.innerHTML.trim().replace(/^[\s]{4}/i, '');
+//    });
+//  }
+//});
+</script>
+</body>
+</html>
+

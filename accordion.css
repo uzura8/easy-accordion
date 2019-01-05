@@ -1,0 +1,55 @@
+.u-clickable {cursor: pointer;}
+.u-mt20 {margin-top: 20px !important;}
+.u-mt30 {margin-top: 30px !important;}
+.u-mt50 {margin-top: 50px !important;}
+.u-mb50 {margin-bottom: 50px !important;}
+.accordion-header {
+  display: block;
+  cursor: pointer;
+}
+.accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: all .5s ease;
+}
+.accordion-content.is-active {
+  max-height: 500px;
+  opacity: 1;
+}
+.accordion-icon,
+.accordion-icon span {
+	display: inline-block;
+	transition: all .5s;
+	box-sizing: border-box;
+}
+.accordion-icon {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	float: right;
+	margin-right: 5px;
+}
+.accordion-icon span {
+	position: absolute;
+  left: 6px;
+  width: 50%;
+	height: 2px;
+  background-color: #9999a8;
+	border-radius: 4px;
+}
+.accordion-icon span:nth-of-type(1) {
+  top: 5px;
+	transform: rotate(0deg);
+}
+.accordion-icon span:nth-of-type(2) {
+  top: 5px;
+	transform: rotate(90deg);
+}
+.js-accordion.is-active .accordion-icon span:nth-of-type(1) {
+	display:none;
+}
+.js-accordion.is-active span:nth-of-type(2) {
+	top: 5px;
+	transform: rotate(180deg);
+}
