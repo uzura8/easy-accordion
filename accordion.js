@@ -1,9 +1,15 @@
 'use strict';
 
 document.addEventListener('click', function(event) {
-  if (event.target.classList.contains('js-accordion') === false) return;
-
   var $el = event.target;
+  var i = 0;
+  while ($el.classList.contains('js-accordion') === false && i < 5) { // Check up to 5 levels above
+    if ($el.parentElement === null) break;
+    $el = $el.parentElement;
+    i++;
+  }
+  if ($el.classList.contains('js-accordion') === false) return;
+
   var activeClass = $el.dataset.active_class !== undefined ? $el.dataset.active_class : 'is-active';
   var isScroll = $el.dataset.scroll == 1 ? $el.dataset.scroll : false;
   var groupSelector = $el.dataset.group !== undefined ? $el.dataset.group : '';
