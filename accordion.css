@@ -53,3 +53,9 @@
 	top: 5px;
 	transform: rotate(180deg);
 }
+.accordion-content-hoge {
+  display: none;
+}
+.accordion-content-hoge.is-active {
+  display: block;
+}
