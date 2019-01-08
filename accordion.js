@@ -10,12 +10,15 @@ document.addEventListener('click', function(event) {
   }
   if ($el.classList.contains('js-accordion') === false) return;
 
-  var activeClass = $el.dataset.active_class !== undefined ? $el.dataset.active_class : 'is-active';
-  var contentClass = $el.dataset.content_class !== undefined ? $el.dataset.content_class : 'accordion-content';
-  var isScroll = $el.dataset.scroll == 1 ? $el.dataset.scroll : false;
+  var activeClass = $el.dataset.active_class !== undefined ?
+        $el.dataset.active_class : 'is-active';
+  var contentClass = $el.dataset.content_class !== undefined ?
+        $el.dataset.content_class : 'accordion-content';
+  var isScroll = $el.dataset.scroll === "1" ? $el.dataset.scroll : false;
   var groupSelector = $el.dataset.group !== undefined ? $el.dataset.group : '';
   var target = $el.dataset.target;
-  var $target = target !== undefined ? document.getElementById(target) : $el.nextElementSibling;
+  var $target = target !== undefined ?
+        document.getElementById(target) : $el.nextElementSibling;
   var toOpen = !$target.classList.contains(activeClass);
 
   // Close other accordions in group

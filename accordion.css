@@ -3,6 +3,8 @@
 .u-mt30 {margin-top: 30px !important;}
 .u-mt50 {margin-top: 50px !important;}
 .u-mb50 {margin-bottom: 50px !important;}
+.u-ml10 {margin-left: 10px !important;}
+.u-fw-nml {font-weight: normal !important;}
 .accordion-header {
   display: block;
   cursor: pointer;
@@ -53,9 +55,9 @@
 	top: 5px;
 	transform: rotate(180deg);
 }
-.accordion-content-hoge {
+.accordion-content-block {
   display: none;
 }
-.accordion-content-hoge.is-active {
+.accordion-content-block.is-active {
   display: block;
 }
