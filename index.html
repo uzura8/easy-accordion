@@ -58,7 +58,7 @@
 </ul>
 </section>
 <section>
-  <h5 class="u-mt20">HTML <a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="code-section-simple">view source</a></h5>
+  <h5 class="u-mt20">HTML <a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="#code-section-simple">view source</a></h5>
   <pre class="accordion-content-block" id="code-section-simple"><code class="js-code html" data-target="demo-section-simple"></code></pre>
 </section>
 <hr>
@@ -104,8 +104,8 @@
   </section>
 </section>
 <section>
-  <h5 class="u-mt20">HTML <a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="code-section-group">view source</a></h5>
-  <pre class="accordion-content-block" id="code-section-group"><code class="js-code html" data-target="demo-section-group"></code></pre>
+  <h5 class="u-mt20">HTML <a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="#code-section-group">view source</a></h5>
+  <pre class="accordion-content-block" id="code-section-group"><code class="js-code html" data-target="#demo-section-group"></code></pre>
 </section>
 <hr>
 
@@ -116,19 +116,19 @@
   <ul class="nav nav-pills">
     <li role="presentation">
       <a class="js-accordion u-clickable"
-        data-target="accordion1"
+        data-target="#accordion1"
         data-group="#accordion-group-free-trigger"
         data-content_class="accordion-content-block">Accordion1</a>
     </li>
     <li role="presentation">
       <a class="js-accordion u-clickable"
-        data-target="accordion2"
+        data-target="#accordion2"
         data-group="#accordion-group-free-trigger"
         data-content_class="accordion-content-block">Accordion2</a>
     </li>
     <li role="presentation">
       <a class="js-accordion u-clickable"
-        data-target="accordion3"
+        data-target="#accordion3"
         data-group="#accordion-group-free-trigger"
         data-content_class="accordion-content-block">Accordion3</a>
     </li>
@@ -155,7 +155,7 @@
   </section>
 </section>
 <section>
-  <h5 class="u-mt20">HTML <a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="code-section-free_trigger">view source</a></h5>
+  <h5 class="u-mt20">HTML <a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="#code-section-free_trigger">view source</a></h5>
   <pre class="accordion-content-block" id="code-section-free_trigger"><code class="js-code html" data-target="demo-free-trigger"></code></pre>
 </section>
 <hr>
@@ -227,7 +227,7 @@
   </section>
 </section>
 <section>
-  <h5 class="u-mt20">HTML <a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="code-section-nested">view source</a></h5>
+  <h5 class="u-mt20">HTML <a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="#code-section-nested">view source</a></h5>
   <pre class="accordion-content-block" id="code-section-nested"><code class="js-code html" data-target="demo-section-nested"></code></pre>
 </section>
 <hr>
@@ -253,15 +253,15 @@
           </tr>
           <tr>
             <td>target</td>
-            <td>data-target="hoge"</td>
+            <td>data-target="#hoge"</td>
             <td>(next block)</td>
             <td>
               <p>
-                Set id name of accordion content block to open and close.<br>
+                Set selector of accordion content block to open and close.<br>
                 If not set, the block next to trigger is automatically applied.
               </p>
               <p class="text-danger">
-                <label>NG pattern:</label> <span>data-target="#hoge"</span>
+                <label>NG pattern:</label> <span>data-target="hoge"</span>
               </p>
             </td>
           </tr>
@@ -271,7 +271,7 @@
             <td>(none)</td>
             <td>
               <p>
-                Set selector name of wrapper block.<br>
+                Set selector of wrapper block.<br>
                 If set, one accordion is opened and the others are closed.
               </p>
               <p class="text-danger">
@@ -317,7 +317,7 @@
     <h4 class="u-mt30">JavaScript</h4>
     <p>Please add below script into the script file loaded commonly.</p>
     <section>
-      <h5 class="u-mt20"><a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="code-section-main-js">view source</a></h5>
+      <h5 class="u-mt20"><a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="#code-section-main-js">view source</a></h5>
       <section class="accordion-content-block" id="code-section-main-js">
         <small>Quoted from <a href="accordion.js" target="_blank">accordion.js</a></small>
         <pre><code class="javascript" id="main-script"></code></pre>
