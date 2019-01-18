@@ -9,7 +9,7 @@ function simpleAccordion(targetElm) {
     els[i].addEventListener('click', function(event) {
       var $el = this;
       var activeClass = $el.dataset.active_class !== undefined ?
-            $el.dataset.active_class : 'is-active';
+            $el.dataset.active_class : '_state-active';
       var contentClass = $el.dataset.content_class !== undefined ?
             $el.dataset.content_class : 'accordion-content';
       var isScroll = $el.dataset.scroll === "1" ? $el.dataset.scroll : false;
