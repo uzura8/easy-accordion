@@ -6,7 +6,7 @@ function simpleAccordion(targetElm) {
   if (els === null) return;
 
   for (var i = 0, n = els.length; i < n; i++) {
-    els[i].addEventListener('click', function(event) {
+    els[i].addEventListener('click', function() {
       var $el = this;
       var activeClass = $el.dataset.active_class !== undefined ?
             $el.dataset.active_class : '_state-active';
@@ -58,7 +58,7 @@ function simpleAccordion(targetElm) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function(event) {
+document.addEventListener('DOMContentLoaded', function() {
   simpleAccordion();
 });
 
