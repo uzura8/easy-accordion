@@ -19,6 +19,7 @@ function simpleAccordion(targetElm) {
       var $target = target !== undefined ?
             targetElm.querySelector(target) : $el.nextElementSibling;
       var toOpen = $target !== null && !$target.classList.contains(activeClass);
+      var closeBtnSelector = $el.dataset.close !== undefined ? $el.dataset.close : '';
 
       // Close other accordions in group
       var $groupParent = null;
@@ -54,6 +55,17 @@ function simpleAccordion(targetElm) {
           var targetTop = targetPosY + scrollTop;
           window.scrollTo(0, targetTop);
         })($scrollTarget);
+      }
+
+      // closeButton
+      if (closeBtnSelector && $target !== null) {
+        var $closeBtn = $target.querySelector(closeBtnSelector);
+        if ($closeBtn !== null) {
+          $closeBtn.addEventListener('click', function() {
+            $el.classList.remove(activeClass);
+            $target.classList.remove(activeClass);
+          });
+        }
       }
     });
   }
