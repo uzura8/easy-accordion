@@ -1,8 +1,9 @@
 'use strict';
 
 function simpleAccordion(targetElm) {
+  var selfSelector = '.js-accordion';
   if (targetElm === undefined) targetElm = document;
-  var els = targetElm.querySelectorAll('.js-accordion');
+  var els = targetElm.querySelectorAll(selfSelector);
   if (els === null) return;
 
   for (var i = 0, n = els.length; i < n; i++) {
@@ -12,7 +13,7 @@ function simpleAccordion(targetElm) {
             $el.dataset.active_class : '_state-active';
       var contentClass = $el.dataset.content_class !== undefined ?
             $el.dataset.content_class : 'accordion-content';
-      var isScroll = $el.dataset.scroll === "1" ? $el.dataset.scroll : false;
+      var isScroll = $el.dataset.scroll === '1' ? $el.dataset.scroll : false;
       var groupSelector = $el.dataset.group !== undefined ? $el.dataset.group : '';
       var target = $el.dataset.target;
       var $target = target !== undefined ?
@@ -29,7 +30,7 @@ function simpleAccordion(targetElm) {
           return null;
         })($el, groupSelector);
         if ($groupParent !== null) {
-          var accordionTriggers = $groupParent.querySelectorAll('.js-accordion');
+          var accordionTriggers = $groupParent.querySelectorAll(selfSelector);
           for (var i = 0, n = accordionTriggers.length; i < n; i++) {
             accordionTriggers[i].classList.remove(activeClass);
           }
