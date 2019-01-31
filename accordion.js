@@ -59,12 +59,16 @@ function simpleAccordion(targetElm) {
 
       // closeButton
       if (closeBtnSelector && $target !== null) {
-        var $closeBtn = $target.querySelector(closeBtnSelector);
-        if ($closeBtn !== null) {
-          $closeBtn.addEventListener('click', function() {
-            $el.classList.remove(activeClass);
-            $target.classList.remove(activeClass);
-          });
+        var closeBtns = $target.querySelectorAll(closeBtnSelector);
+        if (closeBtns) {
+          for (var i = 0, n = closeBtns.length; i < n; i++) {
+            closeBtns[i].addEventListener('click', function(event) {
+              if (event.target.classList.contains(closeBtnSelector.slice(1))) {
+                $el.classList.remove(activeClass);
+                $target.classList.remove(activeClass);
+              }
+            });
+          }
         }
       }
     });
