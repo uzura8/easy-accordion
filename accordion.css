@@ -61,3 +61,35 @@
 .accordion-content-block._state-active {
   display: block;
 }
+
+.modal-block {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 32px 16px 16px;
+}
+.modal-block::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(102, 102, 102, 0.9);
+}
+.modal-block._state-active {
+  display: block;
+}
+.modal-block-content {
+  width: 100%;
+  padding: 16px;
+  background-color: #fff;
+  position: relative;
+  display: block;
+  z-index: 2001;
+}
