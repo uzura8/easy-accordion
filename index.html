@@ -45,15 +45,18 @@
     </ul>
   </li>
   <li>
-    <a class="js-accordion accordion-header">
+    <a class="js-accordion accordion-header" data-close=".js-accordion-close">
       <label>Accordion3</label>
       <div class="accordion-icon"><span></span><span></span></div>
     </a>
-    <ul class="accordion-content">
-      <li>AAAAA</li>
-      <li>BBBBBB</li>
-      <li>CCCCC</li>
-    </ul>
+    <div class="accordion-content">
+      <ul>
+        <li>AAAAA</li>
+        <li>BBBBBB</li>
+        <li>CCCCC</li>
+      </ul>
+      <a class="js-accordion-close u-clickable">Close</a>
+    </div>
   </li>
 </ul>
 </section>
@@ -180,15 +183,18 @@
           <li>BBBBBB</li>
           <li>CCCCC</li>
         </ul>
-        <a class="js-accordion accordion-header" data-group=".accordion-group-child">
+        <a class="js-accordion accordion-header" data-group=".accordion-group-child" data-close=".js-accordion-close">
           <label>Accordion1-2</label>
           <div class="accordion-icon"><span></span><span></span></div>
         </a>
-        <ul class="accordion-content">
-          <li>AAAAA</li>
-          <li>BBBBBB</li>
-          <li>CCCCC</li>
-        </ul>
+        <div class="accordion-content">
+          <ul>
+            <li>AAAAA</li>
+            <li>BBBBBB</li>
+            <li>CCCCC</li>
+          </ul>
+          <a class="js-accordion-close u-clickable">Close</a>
+        </div>
         <a class="js-accordion accordion-header" data-group=".accordion-group-child">
           <label>Accordion1-3</label>
           <div class="accordion-icon"><span></span><span></span></div>
@@ -276,6 +282,22 @@
               </p>
               <p class="text-danger">
                 <label>NG pattern:</label> <span>data-group="hoge"</span>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>close</td>
+            <td>data-close=".close_btn"</td>
+            <td>(none)</td>
+            <td>
+              <p>
+                Set selector of close button.
+              </p>
+              <p class="text-danger">
+                <label>NG pattern:</label> <span>data-close="close_btn"</span>
+              </p>
+              <p class="text-warning">
+                You need to set the button in each accordion content.
               </p>
             </td>
           </tr>
