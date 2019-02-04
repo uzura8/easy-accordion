@@ -4,6 +4,8 @@
   "description": "Simple Accordion not depended on a specific JavaScript library.",
   "main": "SimpleAccordion.js",
   "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +21,13 @@
   "bugs": {
     "url": "https://github.com/uzura8/simple-accordion/issues"
   },
-  "homepage": "https://github.com/uzura8/simple-accordion#readme"
+  "homepage": "https://github.com/uzura8/simple-accordion#readme",
+  "devDependencies": {
+    "commonjs": "0.0.1",
+    "rollup": "^1.1.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-watch": "^4.3.1"
+  }
 }
