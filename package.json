@@ -1,0 +1,23 @@
+{
+  "name": "simple-accordion",
+  "version": "1.0.0",
+  "description": "Simple Accordion not depended on a specific JavaScript library.",
+  "main": "SimpleAccordion.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uzura8/simple-accordion.git"
+  },
+  "keywords": [
+    "accordion",
+    "JavaScript"
+  ],
+  "author": "Shingo Yamada",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uzura8/simple-accordion/issues"
+  },
+  "homepage": "https://github.com/uzura8/simple-accordion#readme"
+}
