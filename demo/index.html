@@ -45,7 +45,7 @@
     </ul>
   </li>
   <li>
-    <a class="js-accordion accordion-header" data-close=".js-accordion-close">
+    <a class="js-accordion accordion-header">
       <label>Accordion3</label>
       <div class="accordion-icon"><span></span><span></span></div>
     </a>
@@ -55,13 +55,13 @@
         <li>BBBBBB</li>
         <li>CCCCC</li>
       </ul>
-      <a class="js-accordion-close u-clickable">Close</a>
+      <a class="js-accordion-close">Close</a>
     </div>
   </li>
 </ul>
 </section>
 <section>
-  <h5 class="u-mt20">HTML <a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="#code-section-simple">view source</a></h5>
+  <h5 class="u-mt20">HTML <a class="js-accordion u-ml10 u-fw-nml" data-target="#code-section-simple">view source</a></h5>
   <pre class="accordion-content-block" id="code-section-simple"><code class="js-code html" data-target="demo-section-simple"></code></pre>
 </section>
 <hr>
@@ -107,7 +107,7 @@
   </section>
 </section>
 <section>
-  <h5 class="u-mt20">HTML <a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="#code-section-group">view source</a></h5>
+  <h5 class="u-mt20">HTML <a class="js-accordion u-ml10 u-fw-nml" data-target="#code-section-group">view source</a></h5>
   <pre class="accordion-content-block" id="code-section-group"><code class="js-code html" data-target="demo-section-group"></code></pre>
 </section>
 <hr>
@@ -118,19 +118,19 @@
 <section id="accordion-group-free-trigger">
   <ul class="nav nav-pills">
     <li role="presentation">
-      <a class="js-accordion u-clickable"
+      <a class="js-accordion"
         data-target="#accordion1"
         data-group="#accordion-group-free-trigger"
         data-content_class="accordion-content-block">Accordion1</a>
     </li>
     <li role="presentation">
-      <a class="js-accordion u-clickable"
+      <a class="js-accordion"
         data-target="#accordion2"
         data-group="#accordion-group-free-trigger"
         data-content_class="accordion-content-block">Accordion2</a>
     </li>
     <li role="presentation">
-      <a class="js-accordion u-clickable"
+      <a class="js-accordion"
         data-target="#accordion3"
         data-group="#accordion-group-free-trigger"
         data-content_class="accordion-content-block">Accordion3</a>
@@ -158,7 +158,7 @@
   </section>
 </section>
 <section>
-  <h5 class="u-mt20">HTML <a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="#code-section-free_trigger">view source</a></h5>
+  <h5 class="u-mt20">HTML <a class="js-accordion u-ml10 u-fw-nml" data-target="#code-section-free_trigger">view source</a></h5>
   <pre class="accordion-content-block" id="code-section-free_trigger"><code class="js-code html" data-target="demo-free-trigger"></code></pre>
 </section>
 <hr>
@@ -183,7 +183,7 @@
           <li>BBBBBB</li>
           <li>CCCCC</li>
         </ul>
-        <a class="js-accordion accordion-header" data-group=".accordion-group-child" data-close=".js-accordion-close">
+        <a class="js-accordion accordion-header" data-group=".accordion-group-child">
           <label>Accordion1-2</label>
           <div class="accordion-icon"><span></span><span></span></div>
         </a>
@@ -193,7 +193,7 @@
             <li>BBBBBB</li>
             <li>CCCCC</li>
           </ul>
-          <a class="js-accordion-close u-clickable">Close</a>
+          <a class="js-accordion-close">Close</a>
         </div>
         <a class="js-accordion accordion-header" data-group=".accordion-group-child">
           <label>Accordion1-3</label>
@@ -233,7 +233,7 @@
   </section>
 </section>
 <section>
-  <h5 class="u-mt20">HTML <a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="#code-section-nested">view source</a></h5>
+  <h5 class="u-mt20">HTML <a class="js-accordion u-ml10 u-fw-nml" data-target="#code-section-nested">view source</a></h5>
   <pre class="accordion-content-block" id="code-section-nested"><code class="js-code html" data-target="demo-section-nested"></code></pre>
 </section>
 <hr>
@@ -242,18 +242,17 @@
   <h3>Simple Modal</h3>
   <section id="demo-modal" class="u-mt20">
 <section id="accordion-modal">
-  <a class="js-accordion u-clickable"
+  <a class="js-accordion"
     data-target="#modal1"
-    data-close=".js-close"
     data-content_class="modal-block">Modal Open</a>
   <div id="modal1" class="modal-block">
-    <div class="modal-block-inner js-close">
+    <div class="modal-block-inner js-accordion-close">
       <div class="modal-block-content">
         <h4>Modal title</h4>
         <section>
           <p>Modal contet.</p>
         </section>
-        <a class="js-close u-clickable">Close</a>
+        <a class="js-accordion-close">Close</a>
       </div>
     </div>
   </div>
@@ -261,7 +260,7 @@
   </section>
 </section>
 <section>
-  <h5 class="u-mt20">HTML <a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="#code-section-modal">view source</a></h5>
+  <h5 class="u-mt20">HTML <a class="js-accordion u-ml10 u-fw-nml" data-target="#code-section-modal">view source</a></h5>
   <pre class="accordion-content-block" id="code-section-modal"><code class="js-code html" data-target="demo-modal"></code></pre>
 </section>
 <hr>
@@ -367,7 +366,7 @@
     <h4 class="u-mt30">JavaScript</h4>
     <p>Please add below script into the script file loaded commonly.</p>
     <section>
-      <h5 class="u-mt20"><a class="js-accordion u-clickable u-ml10 u-fw-nml" data-target="#code-section-main-js">view source</a></h5>
+      <h5 class="u-mt20"><a class="js-accordion u-ml10 u-fw-nml" data-target="#code-section-main-js">view source</a></h5>
       <section class="accordion-content-block" id="code-section-main-js">
         <small>Quoted from <a href="accordion.js" target="_blank">accordion.js</a></small>
         <pre><code class="javascript" id="main-script"></code></pre>

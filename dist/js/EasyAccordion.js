@@ -5,7 +5,7 @@
 }(this, function () { 'use strict';
 
   var EasyAccordion = {
-    handleEvent: function(scopeElm, triggerSelector, func, isRemove) {
+    handleEvent: function(scopeElm, triggerSelector, type, func, isRemove) {
       if ( isRemove === void 0 ) isRemove = false;
 
       var els = scopeElm.querySelectorAll(triggerSelector);
@@ -18,9 +18,9 @@
           triggerSelector: triggerSelector
         };
         if (isRemove) {
-          els[i].removeEventListener('click', listener);
+          els[i].removeEventListener(type, listener);
         } else {
-          els[i].addEventListener('click', listener);
+          els[i].addEventListener(type, listener);
         }
       }
     },
@@ -31,7 +31,11 @@
 
       var toggleSelector = (options.toggleSelector !== undefined) ?
         options.toggleSelector : '.js-accordion';
-      this.handleEvent(scopeElm, toggleSelector, this.toggleAccordion);
+      this.handleEvent(scopeElm, toggleSelector, 'click', this.toggleAccordion);
+
+      var closeSelector = (options.closeSelector !== undefined) ?
+        options.closeSelector : '.js-accordion-close';
+      this.handleEvent(scopeElm, closeSelector, 'click', this.closeAccordion);
     },
     destroy: function(scopeElm, options) {
       if ( options === void 0 ) options = {};
@@ -40,7 +44,11 @@
 
       var toggleSelector = (options.toggleSelector !== undefined) ?
         options.toggleSelector : '.js-accordion';
-      this.handleEvent(scopeElm, toggleSelector, this.toggleAccordion, true);
+      this.handleEvent(scopeElm, toggleSelector, 'click', this.toggleAccordion, true);
+
+      var closeSelector = (options.closeSelector !== undefined) ?
+        options.closeSelector : '.js-accordion-close';
+      this.handleEvent(scopeElm, closeSelector, 'click', this.closeAccordion, true);
     },
     toggleAccordion: function() {
       var $scope = this.scopeElm;
@@ -91,6 +99,26 @@
         })($scrollTarget);
       }
     },
+    closeAccordion: function(event) {
+      var $scope = this.scopeElm;
+      var $trigger = this.eventElm;
+      var activeClass = $trigger.dataset.active_class !== undefined ?
+        $trigger.dataset.active_class : '_state-active';
+      var toggleTriggerSelector = $trigger.dataset.toggle_selector !== undefined ?
+        $trigger.dataset.toggle_selector : '.js-accordion';
+      var toggleTriggers = $scope.querySelectorAll(toggleTriggerSelector);
+      if (toggleTriggers === null || !toggleTriggers.length) { return; }
+      for (var i = 0, n = toggleTriggers.length; i < n; i++) {
+        var $toggleTrigger = toggleTriggers[i];
+        $toggleTrigger.classList.remove(activeClass);
+
+        var targetSelector = $toggleTrigger.dataset.target;
+        var $target = targetSelector !== undefined ?
+          $scope.querySelector(targetSelector) : $toggleTrigger.nextElementSibling;
+        if ($target === null) { continue; }
+        $target.classList.remove(activeClass);
+      }
+    }
   };
 
   return EasyAccordion;
