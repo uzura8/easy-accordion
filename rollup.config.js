@@ -1,5 +1,6 @@
 import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
+import buble from 'rollup-plugin-buble';
 
 export default {
   input: 'src/js/EasyAccordion.js',
@@ -11,5 +12,6 @@ export default {
   plugins: [
     nodeResolve(),
     commonjs(),
+    buble()
   ]
 };

@@ -5,29 +5,39 @@
 }(this, function () { 'use strict';
 
   var EasyAccordion = {
-    init: function(scopeElm) {
-      if (scopeElm === undefined) scopeElm = document;
-      var els = scopeElm.querySelectorAll('.js-accordion');
-      if (els === null || !els.length) return;
+    init: function(scopeElm, options) {
+      if ( options === void 0 ) options = {};
+
+      var toggleSelector = (options.toggleSelector !== undefined) ?
+        options.toggleSelector : '.js-accordion';
+      if (scopeElm === undefined) { scopeElm = document; }
+      var els = scopeElm.querySelectorAll(toggleSelector);
+      if (els === null || !els.length) { return; }
 
       for (var i = 0, n = els.length; i < n; i++) {
         els[i].addEventListener('click', {
           handleEvent: this.toggleAccordion,
           scopeElm: scopeElm,
-          eventElm: els[i]
+          eventElm: els[i],
+          triggerSelector: toggleSelector
         });
       }
     },
-    destroy: function(scopeElm) {
-      if (scopeElm === undefined) scopeElm = document;
-      var els = scopeElm.querySelectorAll('.js-accordion');
-      if (els === null || !els.length) return;
+    destroy: function(scopeElm, options) {
+      if ( options === void 0 ) options = {};
+
+      var toggleSelector = (options.toggleSelector !== undefined) ?
+        options.toggleSelector : '.js-accordion';
+      if (scopeElm === undefined) { scopeElm = document; }
+      var els = scopeElm.querySelectorAll(toggleSelector);
+      if (els === null || !els.length) { return; }
 
       for (var i = 0, n = els.length; i < n; i++) {
         els[i].removeEventListener('click', {
           handleEvent: this.toggleAccordion,
           scopeElm: scopeElm,
-          eventElm: els[i]
+          eventElm: els[i],
+          triggerSelector: toggleSelector
         });
       }
     },
@@ -53,24 +63,24 @@
       if (toOpen && groupSelector) {
         $groupParent = (function (elem, selector) {
           for (; elem && elem !== $scope; elem = elem.parentNode) {
-            if (elem.matches(selector)) return elem;
+            if (elem.matches(selector)) { return elem; }
           }
           return null;
         })($trigger, groupSelector);
         if ($groupParent !== null) {
-          var accordionTriggers = $groupParent.querySelectorAll('.js-accordion');
+          var accordionTriggers = $groupParent.querySelectorAll(this.triggerSelector);
           for (var i = 0, n = accordionTriggers.length; i < n; i++) {
             accordionTriggers[i].classList.remove(activeClass);
           }
           var accordionContents = $groupParent.querySelectorAll('.' + contentClass);
-          for (var i = 0, n = accordionContents.length; i < n; i++) {
-            accordionContents[i].classList.remove(activeClass);
+          for (var i$1 = 0, n$1 = accordionContents.length; i$1 < n$1; i$1++) {
+            accordionContents[i$1].classList.remove(activeClass);
           }
         }
       }
 
       $trigger.classList.toggle(activeClass);
-      if ($target !== null) $target.classList.toggle(activeClass);
+      if ($target !== null) { $target.classList.toggle(activeClass); }
 
       if (toOpen && isScroll) {
         var $scrollTarget = $groupParent ? $groupParent : $trigger;
@@ -85,8 +95,8 @@
       if (toOpen && closeBtnSelector && $target !== null) {
         var closeBtns = $target.querySelectorAll(closeBtnSelector);
         if (closeBtns !== null) {
-          for (var i = 0, n = closeBtns.length; i < n; i++) {
-            closeBtns[i].addEventListener('click', (function(selfElm, closeBtnSelector, triggerElm, contentElm, activeClass) {
+          for (var i$2 = 0, n$2 = closeBtns.length; i$2 < n$2; i$2++) {
+            closeBtns[i$2].addEventListener('click', (function (selfElm, closeBtnSelector, triggerElm, contentElm, activeClass) {
               return function removeActive(event) {
                 if (event.target.classList.contains(closeBtnSelector.slice(1))) {
                   triggerElm.classList.remove(activeClass);
@@ -94,7 +104,7 @@
                 }
                 selfElm.removeEventListener('click', removeActive);
               }
-            })(closeBtns[i], closeBtnSelector, $trigger, $target, activeClass), false);
+            })(closeBtns[i$2], closeBtnSelector, $trigger, $target, activeClass), false);
           }
         }
       }
