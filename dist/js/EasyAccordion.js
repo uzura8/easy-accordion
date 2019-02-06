@@ -5,55 +5,58 @@
 }(this, function () { 'use strict';
 
   var EasyAccordion = {
-    init: function(targetElm) {
-      if (targetElm === undefined) targetElm = document;
-      var els = targetElm.querySelectorAll('.js-accordion');
+    init: function(scopeElm) {
+      if (scopeElm === undefined) scopeElm = document;
+      var els = scopeElm.querySelectorAll('.js-accordion');
       if (els === null || !els.length) return;
 
       for (var i = 0, n = els.length; i < n; i++) {
         els[i].addEventListener('click', {
-          handleEvent: this.createAccordion,
-          scopeElm: targetElm,
+          handleEvent: this.toggleAccordion,
+          scopeElm: scopeElm,
           eventElm: els[i]
         });
       }
     },
-    remove: function(targetElm) {
-      if (targetElm === undefined) targetElm = document;
-      var els = targetElm.querySelectorAll('.js-accordion');
+    destroy: function(scopeElm) {
+      if (scopeElm === undefined) scopeElm = document;
+      var els = scopeElm.querySelectorAll('.js-accordion');
       if (els === null || !els.length) return;
 
       for (var i = 0, n = els.length; i < n; i++) {
         els[i].removeEventListener('click', {
-          handleEvent: this.createAccordion,
-          scopeElm: targetElm,
+          handleEvent: this.toggleAccordion,
+          scopeElm: scopeElm,
           eventElm: els[i]
         });
       }
     },
-    createAccordion: function() {
-      var targetElm = this.scopeElm;
-      var $el = this.eventElm;
-      var activeClass = $el.dataset.active_class !== undefined ?
-        $el.dataset.active_class : '_state-active';
-      var contentClass = $el.dataset.content_class !== undefined ?
-        $el.dataset.content_class : 'accordion-content';
-      var isScroll = $el.dataset.scroll === "1" ? $el.dataset.scroll : false;
-      var groupSelector = $el.dataset.group !== undefined ? $el.dataset.group : '';
-      var target = $el.dataset.target;
-      var $target = target !== undefined ?
-        targetElm.querySelector(target) : $el.nextElementSibling;
-      var toOpen = $target !== null && !$target.classList.contains(activeClass);
-      var closeBtnSelector = $el.dataset.close !== undefined ? $el.dataset.close : '';
+    toggleAccordion: function() {
+      var $scope = this.scopeElm;
+      var $trigger = this.eventElm;
+      var activeClass = $trigger.dataset.active_class !== undefined ?
+        $trigger.dataset.active_class : '_state-active';
+      var contentClass = $trigger.dataset.content_class !== undefined ?
+        $trigger.dataset.content_class : 'accordion-content';
+      var isScroll = $trigger.dataset.scroll === "1" ?
+        $trigger.dataset.scroll : false;
+      var groupSelector = $trigger.dataset.group !== undefined ?
+        $trigger.dataset.group : '';
+      var targetSelector = $trigger.dataset.target;
+      var $target = targetSelector !== undefined ?
+        $scope.querySelector(targetSelector) : $trigger.nextElementSibling;
+      var toOpen = !$target.classList.contains(activeClass);
+      var closeBtnSelector = $trigger.dataset.close !== undefined ?
+        $trigger.dataset.close : '';
 
       var $groupParent = null;
       if (toOpen && groupSelector) {
         $groupParent = (function (elem, selector) {
-          for (; elem && elem !== targetElm; elem = elem.parentNode) {
+          for (; elem && elem !== $scope; elem = elem.parentNode) {
             if (elem.matches(selector)) return elem;
           }
           return null;
-        })($el, groupSelector);
+        })($trigger, groupSelector);
         if ($groupParent !== null) {
           var accordionTriggers = $groupParent.querySelectorAll('.js-accordion');
           for (var i = 0, n = accordionTriggers.length; i < n; i++) {
@@ -66,11 +69,11 @@
         }
       }
 
-      $el.classList.toggle(activeClass);
+      $trigger.classList.toggle(activeClass);
       if ($target !== null) $target.classList.toggle(activeClass);
 
       if (toOpen && isScroll) {
-        var $scrollTarget = $groupParent ? $groupParent : $el;
+        var $scrollTarget = $groupParent ? $groupParent : $trigger;
         (function (targetElm) {
           var targetPosY = targetElm.getBoundingClientRect().top;
           var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -91,7 +94,7 @@
                 }
                 selfElm.removeEventListener('click', removeActive);
               }
-            })(closeBtns[i], closeBtnSelector, $el, $target, activeClass), false);
+            })(closeBtns[i], closeBtnSelector, $trigger, $target, activeClass), false);
           }
         }
       }
