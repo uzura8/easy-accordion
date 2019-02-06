@@ -1,8 +1,8 @@
 {
-  "name": "simple-accordion",
+  "name": "easy-accordion",
   "version": "1.0.0",
-  "description": "Simple Accordion not depended on a specific JavaScript library.",
-  "main": "SimpleAccordion.js",
+  "description": "Easy Accordion not depended on a specific JavaScript library.",
+  "main": "EasyAccordion.js",
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -w",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uzura8/simple-accordion.git"
+    "url": "git+https://github.com/uzura8/easy-accordion.git"
   },
   "keywords": [
     "accordion",
@@ -19,9 +19,9 @@
   "author": "Shingo Yamada",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/uzura8/simple-accordion/issues"
+    "url": "https://github.com/uzura8/easy-accordion/issues"
   },
-  "homepage": "https://github.com/uzura8/simple-accordion#readme",
+  "homepage": "https://github.com/uzura8/easy-accordion#readme",
   "devDependencies": {
     "commonjs": "0.0.1",
     "rollup": "^1.1.2",

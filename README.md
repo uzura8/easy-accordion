@@ -1,1 +1,1 @@
-# simple-accordion
+# easy-accordion

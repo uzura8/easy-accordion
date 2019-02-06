@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container u-mb50">
-<h1>Simple Accordion Sample</h1>
+<h1>Easy Accordion Sample</h1>
 <p class="lead">This accordion sample dose not depend on a specific library.</p>
 
 <section class="u-mt50">
@@ -401,7 +401,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <script>
 var xhr = new XMLHttpRequest();
-xhr.open('GET', '../src/js/SimpleAccordion.js', true);
+xhr.open('GET', '../src/js/EasyAccordion.js', true);
 xhr.onload = function() {
   if (xhr.status >= 200 && xhr.status < 400) {
     var $el = document.getElementById('main-script');
@@ -411,10 +411,10 @@ xhr.onload = function() {
 };
 xhr.send();
 </script>
-<script src="../dist/js/SimpleAccordion.js"></script>
+<script src="../dist/js/EasyAccordion.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  SimpleAccordion.init();
+  EasyAccordion.init();
 });
 </script>
 </body>

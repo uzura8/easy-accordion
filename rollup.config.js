@@ -2,11 +2,11 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 
 export default {
-  input: 'src/js/SimpleAccordion.js',
+  input: 'src/js/EasyAccordion.js',
   output: {
-    file: 'dist/js/SimpleAccordion.js',
+    file: 'dist/js/EasyAccordion.js',
     format: 'umd',
-    name: 'SimpleAccordion',
+    name: 'EasyAccordion',
   },
   plugins: [
     nodeResolve(),
