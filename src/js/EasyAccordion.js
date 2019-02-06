@@ -1,35 +1,34 @@
 export default {
-  init: function(scopeElm, options = {}) {
-    const toggleSelector = (options.toggleSelector !== undefined) ?
-      options.toggleSelector : '.js-accordion';
-    if (scopeElm === undefined) scopeElm = document;
-    const els = scopeElm.querySelectorAll(toggleSelector);
+  handleEvent: function(scopeElm, triggerSelector, func, isRemove = false) {
+    var els = scopeElm.querySelectorAll(triggerSelector);
     if (els === null || !els.length) return;
-
     for (let i = 0, n = els.length; i < n; i++) {
-      els[i].addEventListener('click', {
-        handleEvent: this.toggleAccordion,
+      let listener = {
+        handleEvent: func,
         scopeElm: scopeElm,
         eventElm: els[i],
-        triggerSelector: toggleSelector
-      });
+        triggerSelector: triggerSelector
+      };
+      if (isRemove) {
+        els[i].removeEventListener('click', listener);
+      } else {
+        els[i].addEventListener('click', listener);
+      }
     }
   },
-  destroy: function(scopeElm, options = {}) {
+  init: function(scopeElm, options = {}) {
+    if (scopeElm === undefined) scopeElm = document;
+
     const toggleSelector = (options.toggleSelector !== undefined) ?
       options.toggleSelector : '.js-accordion';
+    this.handleEvent(scopeElm, toggleSelector, this.toggleAccordion);
+  },
+  destroy: function(scopeElm, options = {}) {
     if (scopeElm === undefined) scopeElm = document;
-    const els = scopeElm.querySelectorAll(toggleSelector);
-    if (els === null || !els.length) return;
 
-    for (let i = 0, n = els.length; i < n; i++) {
-      els[i].removeEventListener('click', {
-        handleEvent: this.toggleAccordion,
-        scopeElm: scopeElm,
-        eventElm: els[i],
-        triggerSelector: toggleSelector
-      });
-    }
+    const toggleSelector = (options.toggleSelector !== undefined) ?
+      options.toggleSelector : '.js-accordion';
+    this.handleEvent(scopeElm, toggleSelector, this.toggleAccordion, true);
   },
   toggleAccordion: function() {
     const $scope = this.scopeElm;
@@ -46,8 +45,6 @@ export default {
     const $target = targetSelector !== undefined ?
       $scope.querySelector(targetSelector) : $trigger.nextElementSibling;
     const toOpen = !$target.classList.contains(activeClass);
-    const closeBtnSelector = $trigger.dataset.close !== undefined ?
-      $trigger.dataset.close : '';
 
     var $groupParent = null;
     if (toOpen && groupSelector) {
@@ -81,23 +78,6 @@ export default {
         window.scrollTo(0, targetTop);
       })($scrollTarget);
     }
-    // closeButton
-    if (toOpen && closeBtnSelector && $target !== null) {
-      const closeBtns = $target.querySelectorAll(closeBtnSelector);
-      if (closeBtns !== null) {
-        for (let i = 0, n = closeBtns.length; i < n; i++) {
-          closeBtns[i].addEventListener('click', ((selfElm, closeBtnSelector, triggerElm, contentElm, activeClass) => {
-            return function removeActive(event) {
-              if (event.target.classList.contains(closeBtnSelector.slice(1))) {
-                triggerElm.classList.remove(activeClass);
-                contentElm.classList.remove(activeClass);
-              }
-              selfElm.removeEventListener('click', removeActive);
-            }
-          })(closeBtns[i], closeBtnSelector, $trigger, $target, activeClass), false);
-        }
-      }
-    }
-  }
+  },
 }
 

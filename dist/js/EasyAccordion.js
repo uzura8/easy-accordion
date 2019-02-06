@@ -5,41 +5,42 @@
 }(this, function () { 'use strict';
 
   var EasyAccordion = {
+    handleEvent: function(scopeElm, triggerSelector, func, isRemove) {
+      if ( isRemove === void 0 ) isRemove = false;
+
+      var els = scopeElm.querySelectorAll(triggerSelector);
+      if (els === null || !els.length) { return; }
+      for (var i = 0, n = els.length; i < n; i++) {
+        var listener = {
+          handleEvent: func,
+          scopeElm: scopeElm,
+          eventElm: els[i],
+          triggerSelector: triggerSelector
+        };
+        if (isRemove) {
+          els[i].removeEventListener('click', listener);
+        } else {
+          els[i].addEventListener('click', listener);
+        }
+      }
+    },
     init: function(scopeElm, options) {
       if ( options === void 0 ) options = {};
 
+      if (scopeElm === undefined) { scopeElm = document; }
+
       var toggleSelector = (options.toggleSelector !== undefined) ?
         options.toggleSelector : '.js-accordion';
-      if (scopeElm === undefined) { scopeElm = document; }
-      var els = scopeElm.querySelectorAll(toggleSelector);
-      if (els === null || !els.length) { return; }
-
-      for (var i = 0, n = els.length; i < n; i++) {
-        els[i].addEventListener('click', {
-          handleEvent: this.toggleAccordion,
-          scopeElm: scopeElm,
-          eventElm: els[i],
-          triggerSelector: toggleSelector
-        });
-      }
+      this.handleEvent(scopeElm, toggleSelector, this.toggleAccordion);
     },
     destroy: function(scopeElm, options) {
       if ( options === void 0 ) options = {};
 
+      if (scopeElm === undefined) { scopeElm = document; }
+
       var toggleSelector = (options.toggleSelector !== undefined) ?
         options.toggleSelector : '.js-accordion';
-      if (scopeElm === undefined) { scopeElm = document; }
-      var els = scopeElm.querySelectorAll(toggleSelector);
-      if (els === null || !els.length) { return; }
-
-      for (var i = 0, n = els.length; i < n; i++) {
-        els[i].removeEventListener('click', {
-          handleEvent: this.toggleAccordion,
-          scopeElm: scopeElm,
-          eventElm: els[i],
-          triggerSelector: toggleSelector
-        });
-      }
+      this.handleEvent(scopeElm, toggleSelector, this.toggleAccordion, true);
     },
     toggleAccordion: function() {
       var $scope = this.scopeElm;
@@ -56,8 +57,6 @@
       var $target = targetSelector !== undefined ?
         $scope.querySelector(targetSelector) : $trigger.nextElementSibling;
       var toOpen = !$target.classList.contains(activeClass);
-      var closeBtnSelector = $trigger.dataset.close !== undefined ?
-        $trigger.dataset.close : '';
 
       var $groupParent = null;
       if (toOpen && groupSelector) {
@@ -91,24 +90,7 @@
           window.scrollTo(0, targetTop);
         })($scrollTarget);
       }
-      // closeButton
-      if (toOpen && closeBtnSelector && $target !== null) {
-        var closeBtns = $target.querySelectorAll(closeBtnSelector);
-        if (closeBtns !== null) {
-          for (var i$2 = 0, n$2 = closeBtns.length; i$2 < n$2; i$2++) {
-            closeBtns[i$2].addEventListener('click', (function (selfElm, closeBtnSelector, triggerElm, contentElm, activeClass) {
-              return function removeActive(event) {
-                if (event.target.classList.contains(closeBtnSelector.slice(1))) {
-                  triggerElm.classList.remove(activeClass);
-                  contentElm.classList.remove(activeClass);
-                }
-                selfElm.removeEventListener('click', removeActive);
-              }
-            })(closeBtns[i$2], closeBtnSelector, $trigger, $target, activeClass), false);
-          }
-        }
-      }
-    }
+    },
   };
 
   return EasyAccordion;
