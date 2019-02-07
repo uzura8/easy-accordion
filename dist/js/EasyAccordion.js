@@ -68,12 +68,7 @@
 
       var $groupParent = null;
       if (toOpen && groupSelector) {
-        $groupParent = (function (elem, selector) {
-          for (; elem && elem !== $scope; elem = elem.parentNode) {
-            if (elem.matches(selector)) { return elem; }
-          }
-          return null;
-        })($trigger, groupSelector);
+        $groupParent = EasyAccordion.closest($trigger, groupSelector, $scope);
         if ($groupParent !== null) {
           var accordionTriggers = $groupParent.querySelectorAll(this.triggerSelector);
           for (var i = 0, n = accordionTriggers.length; i < n; i++) {
@@ -101,9 +96,17 @@
     },
     closeAccordion: function(event) {
       var $scope = this.scopeElm;
+      var closeTriggerSelector = this.triggerSelector;
       var $trigger = this.eventElm;
+      var $eventTarget = event.target;
       var activeClass = $trigger.dataset.active_class !== undefined ?
         $trigger.dataset.active_class : '_state-active';
+      var ignoreSelector = $trigger.dataset.ignore_selector;
+      if (ignoreSelector && $eventTarget != $trigger) {
+        if (EasyAccordion.closest($eventTarget, ignoreSelector, $scope) !== null) {
+          return;
+        }
+      }
       var toggleTriggerSelector = $trigger.dataset.toggle_selector !== undefined ?
         $trigger.dataset.toggle_selector : '.js-accordion';
       var toggleTriggers = $scope.querySelectorAll(toggleTriggerSelector);
@@ -118,6 +121,15 @@
         if ($target === null) { continue; }
         $target.classList.remove(activeClass);
       }
+    },
+    closest: function(node, searchSelector, scopeElm) {
+      if (searchSelector === null || !searchSelector) { return null; }
+      if (scopeElm === null) { scopeElm = document; }
+      while(node !== null && node != scopeElm) {
+        if (node.matches(searchSelector)) { return node; }
+        node = node.parentElement || node.parentNode;
+      }
+      return null;
     }
   };
 

@@ -1,4 +1,4 @@
-export default {
+const EasyAccordion = {
   handleEvent: function(scopeElm, triggerSelector, type, func, isRemove = false) {
     var els = scopeElm.querySelectorAll(triggerSelector);
     if (els === null || !els.length) return;
@@ -56,12 +56,7 @@ export default {
 
     var $groupParent = null;
     if (toOpen && groupSelector) {
-      $groupParent = ((elem, selector) => {
-        for (; elem && elem !== $scope; elem = elem.parentNode) {
-          if (elem.matches(selector)) return elem;
-        }
-        return null;
-      })($trigger, groupSelector);
+      $groupParent = EasyAccordion.closest($trigger, groupSelector, $scope);
       if ($groupParent !== null) {
         const accordionTriggers = $groupParent.querySelectorAll(this.triggerSelector);
         for (let i = 0, n = accordionTriggers.length; i < n; i++) {
@@ -89,9 +84,17 @@ export default {
   },
   closeAccordion: function(event) {
     const $scope = this.scopeElm;
+    const closeTriggerSelector = this.triggerSelector;
     const $trigger = this.eventElm;
+    const $eventTarget = event.target;
     const activeClass = $trigger.dataset.active_class !== undefined ?
       $trigger.dataset.active_class : '_state-active';
+    const ignoreSelector = $trigger.dataset.ignore_selector;
+    if (ignoreSelector && $eventTarget != $trigger) {
+      if (EasyAccordion.closest($eventTarget, ignoreSelector, $scope) !== null) {
+        return;
+      }
+    }
     const toggleTriggerSelector = $trigger.dataset.toggle_selector !== undefined ?
       $trigger.dataset.toggle_selector : '.js-accordion';
     const toggleTriggers = $scope.querySelectorAll(toggleTriggerSelector);
@@ -106,6 +109,16 @@ export default {
       if ($target === null) continue;
       $target.classList.remove(activeClass);
     }
+  },
+  closest: function(node, searchSelector, scopeElm) {
+    if (searchSelector === null || !searchSelector) return null;
+    if (scopeElm === null) scopeElm = document;
+    while(node !== null && node != scopeElm) {
+      if (node.matches(searchSelector)) return node;
+      node = node.parentElement || node.parentNode;
+    }
+    return null;
   }
 }
 
+export default EasyAccordion;
