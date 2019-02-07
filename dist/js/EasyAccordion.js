@@ -36,6 +36,10 @@
       var closeSelector = (options.closeSelector !== undefined) ?
         options.closeSelector : '.js-accordion-close';
       this.handleEvent(scopeElm, closeSelector, 'click', this.closeAccordion);
+
+      var selectSelector = (options.selectSelector !== undefined) ?
+        options.selectSelector : '.js-accordion-select';
+      this.handleEvent(scopeElm, selectSelector, 'change', this.selectAccordion);
     },
     destroy: function(scopeElm, options) {
       if ( options === void 0 ) options = {};
@@ -49,6 +53,10 @@
       var closeSelector = (options.closeSelector !== undefined) ?
         options.closeSelector : '.js-accordion-close';
       this.handleEvent(scopeElm, closeSelector, 'click', this.closeAccordion, true);
+
+      var selectSelector = (options.selectSelector !== undefined) ?
+        options.selectSelector : '.js-accordion-select';
+      this.handleEvent(scopeElm, selectSelector, 'change', this.selectAccordion, true);
     },
     toggleAccordion: function() {
       var $scope = this.scopeElm;
@@ -119,6 +127,42 @@
         $scope.querySelector(targetSelector) : $toggleTrigger.nextElementSibling;
       if ($target === null) { return; }
       $target.classList.remove(activeClass);
+    },
+    selectAccordion: function(event) {
+      var $scope = this.scopeElm;
+      var $trigger = this.eventElm;
+      var selectedIndex = $trigger.selectedIndex;
+      var selectedValue = $trigger.options[selectedIndex].value;
+
+      var activeClass = $trigger.dataset.active_class !== undefined ?
+        $trigger.dataset.active_class : '_state-active';
+      var contentClass = $trigger.dataset.content_class !== undefined ?
+        $trigger.dataset.content_class : 'accordion-content';
+      var groupSelector = $trigger.dataset.group !== undefined ?
+        $trigger.dataset.group : '';
+
+      var toOpen = false;
+      var $target = null;
+      if (selectedValue) {
+        var targetSelector = selectedValue;
+        $target = $scope.querySelector(targetSelector);
+        toOpen = !$target.classList.contains(activeClass);
+      }
+      var $groupParent = null;
+      if (groupSelector) {
+        $groupParent = EasyAccordion.closest($trigger, groupSelector, $scope);
+        if ($groupParent !== null) {
+          var accordionTriggers = $groupParent.querySelectorAll(this.triggerSelector);
+          for (var i = 0, n = accordionTriggers.length; i < n; i++) {
+            accordionTriggers[i].classList.remove(activeClass);
+          }
+          var accordionContents = $groupParent.querySelectorAll('.' + contentClass);
+          for (var i$1 = 0, n$1 = accordionContents.length; i$1 < n$1; i$1++) {
+            accordionContents[i$1].classList.remove(activeClass);
+          }
+        }
+      }
+      if ($target !== null && toOpen) { $target.classList.add(activeClass); }
     },
     closest: function(node, searchSelector, scopeElm) {
       if (searchSelector === null || !searchSelector) { return null; }
