@@ -464,6 +464,44 @@
         </div>
       </section>
     </section>
+    <section>
+      <h4 class="u-mt20">Select Trigger</h4>
+      <ul>
+        <li>Set class <code>js-accordioni-select</code>to select tag.</li>
+        <li>And Set accordion target selector to value of options.</li>
+        <li><code>_state-active</code> class is added to trigger and content block at open.</li>
+        <li class="text-danger">* You have to define styles for them.</li>
+      </ul>
+      <section>
+        <h5>Example</h5>
+        <pre><code class="js-code html" data-target="demo-example-select"></code></pre>
+        <div id="demo-example-select" class="u-hidden">
+<div id="example-group-select">
+  <select class="js-accordion-select"
+    data-group="#example-group-select"
+    data-content_class="accordion-content-block">
+    <option value="">Please Select</option>
+    <option value="#example-select1">Accordion1</option>
+    <option value="#example-select2">Accordion2</option>
+    <option value="#example-select3">Accordion3</option>
+  </select>
+  <div id="example-select1" class="accordion-content-block">
+    <p>Accordion1 contet.</p>
+  </div>
+  <div id="example-select2" class="accordion-content-block">
+    <p>Accordion2 contet.</p>
+  </div>
+  <div id="example-select3" class="accordion-content-block">
+    <p>Accordion3 contet.</p>
+  </div>
+</div>
+        </div>
+      </section>
+      <section>
+        <h5 class="u-mt30">Options</h5>
+        <p>Refer to above.</p>
+      </section>
+    </section>
   </section>
   <section>
     <h4 class="u-mt30">JavaScript</h4>
