@@ -1,9 +1,12 @@
+.u-hidden {display: none !important;}
 .u-mt20 {margin-top: 20px !important;}
 .u-mt30 {margin-top: 30px !important;}
 .u-mt50 {margin-top: 50px !important;}
 .u-mb50 {margin-bottom: 50px !important;}
 .u-ml10 {margin-left: 10px !important;}
+.u-fs18 {font-size: 18px !important;}
 .u-fw-nml {font-weight: normal !important;}
+.u-fw-bld {font-weight: bold !important;}
 .accordion-header {
   display: block;
   cursor: pointer;

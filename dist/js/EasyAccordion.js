@@ -101,7 +101,7 @@
       var $eventTarget = event.target;
       var activeClass = $trigger.dataset.active_class !== undefined ?
         $trigger.dataset.active_class : '_state-active';
-      var ignoreSelector = $trigger.dataset.ignore_selector;
+      var ignoreSelector = $trigger.dataset.ignore;
       if (ignoreSelector && $eventTarget != $trigger) {
         if (EasyAccordion.closest($eventTarget, ignoreSelector, $scope) !== null) {
           return;

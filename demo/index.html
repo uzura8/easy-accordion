@@ -249,7 +249,7 @@
   <div id="modal1" class="modal-block">
     <div class="modal-block-inner js-accordion-close"
       data-trigger="#modal-toggle"
-      data-ignore_selector=".modal-block-content">
+      data-ignore=".modal-block-content">
       <div class="modal-block-content">
         <h4>Modal title</h4>
         <section>
@@ -271,115 +271,173 @@
 <section class="u-mt30">
   <h2>Getting statrted</h2>
   <section>
-    <h4 class="u-mt30">HTML</h4>
-    <ul>
-      <li>Set class <code>js-accordion</code>to the accordion trigger element.</li>
-      <li><code>_state-active</code> class is added trigger and content block at open.</li>
-      <li>Please define styles for them.</li>
-    </ul>
+    <h3 class="u-mt30">HTML</h3>
     <section>
-      <h5 class="u-mt30">Options</h5>
-      <div class="table-responsive">
-        <table class="table">
-          <tr>
-            <th>Parameter</th>
-            <th>Example</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-          <tr>
-            <td>target</td>
-            <td>data-target="#hoge"</td>
-            <td>(next block)</td>
-            <td>
-              <p>
-                Set selector of accordion content block to open and close.<br>
-                If not set, the block next to trigger is automatically applied.
-              </p>
-              <p class="text-danger">
-                <label>NG pattern:</label> <span>data-target="hoge"</span>
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>group</td>
-            <td>data-group=".hoge"</td>
-            <td>(none)</td>
-            <td>
-              <p>
-                Set selector of wrapper block.<br>
-                If set, one accordion is opened and the others are closed.
-              </p>
-              <p class="text-danger">
-                <label>NG pattern:</label> <span>data-group="hoge"</span>
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>close</td>
-            <td>data-close=".close_btn"</td>
-            <td>(none)</td>
-            <td>
-              <p>
-                Set selector of close button.
-              </p>
-              <p class="text-danger">
-                <label>NG pattern:</label> <span>data-close="close_btn"</span>
-              </p>
-              <p class="text-warning">
-                You need to set the button in each accordion content.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>scroll</td>
-            <td>data-scroll="1"</td>
-            <td>(none)</td>
-            <td>
-              <p>
-                If set "1", scrolled to trigger block at open.<br>
-                If not set or set other values, not scrolled.
-              </p>
-              <p class="text-warning">
-                If set with group, scroll to top of triggers group.
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>active_class</td>
-            <td>data-active_class="active"</td>
-            <td>_state-active</td>
-            <td>
-              Use this, if you need to change class name indicating active status.
-            </td>
-          </tr>
-          <tr>
-            <td>content_class</td>
-            <td>data-content_class="hoge"</td>
-            <td>accordion-content</td>
-            <td>
-              Use this, if you need to change class name of accordion content block.
-            </td>
-          </tr>
-        </table>
-      </div>
+      <h4 class="u-mt20">Toggle Trigger</h4>
+      <ul>
+        <li>Set class <code>js-accordion</code>to the accordion trigger element.</li>
+        <li><code>_state-active</code> class is added to trigger and content block at open.</li>
+        <li class="text-danger">* You have to define styles for them.</li>
+      </ul>
+      <section>
+        <h5>Example</h5>
+        <pre><code class="js-code html" data-target="demo-example"></code></pre>
+        <div id="demo-example" class="u-hidden">
+<a class="js-accordion" data-target="#accordion-example">
+<!-- _state-active class added here at open -->
+  Accordion Title
+</a>
+<div id="accordion-example">
+<!-- _state-active class added here at open -->
+  Accordion Content
+</div>
+        </code></pre>
+      </section>
+      <section>
+        <h5 class="u-mt30">Options</h5>
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th>Parameter</th>
+              <th>Example</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>target</td>
+              <td>data-target="#hoge"</td>
+              <td>(next block)</td>
+              <td>
+                <p>
+                  Set selector of accordion content block to open and close.<br>
+                  If not set, the block next to trigger is automatically applied.
+                </p>
+                <p class="text-danger">
+                  <label>NG pattern:</label> <span>data-target="hoge"</span>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>group</td>
+              <td>data-group=".hoge"</td>
+              <td>(none)</td>
+              <td>
+                <p>
+                  Set selector of wrapper block.<br>
+                  If set, one accordion is opened and the others are closed.
+                </p>
+                <p class="text-danger">
+                  <label>NG pattern:</label> <span>data-group="hoge"</span>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>scroll</td>
+              <td>data-scroll="1"</td>
+              <td>(none)</td>
+              <td>
+                <p>
+                  If set "1", scrolled to trigger block at open.<br>
+                  If not set or set other values, not scrolled.
+                </p>
+                <p class="text-warning">
+                  If set with group, scroll to top of triggers group.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>active_class</td>
+              <td>data-active_class="active"</td>
+              <td>_state-active</td>
+              <td>
+                Use this, if you need to change class name indicating active status.
+              </td>
+            </tr>
+            <tr>
+              <td>content_class</td>
+              <td>data-content_class="hoge"</td>
+              <td>accordion-content</td>
+              <td>
+                Use this, if you need to change class name of accordion content block.
+              </td>
+            </tr>
+          </table>
+        </div>
+      </section>
+    </section>
+    <section>
+      <h4 class="u-mt20">Close Trigger</h4>
+      <ul>
+        <li>Set class <code>js-accordion-close</code>to the accordion close trigger element.</li>
+        <li><code>_state-active</code> class is deleted from trigger and content block.</li>
+        <li class="text-danger">* You have to define styles for them.</li>
+      </ul>
+      <section>
+        <h5>Example</h5>
+        <pre><code class="js-code html" data-target="demo-example2"></code></pre>
+        <div id="demo-example2" class="u-hidden">
+<a class="js-accordion" data-target="#accordion-example">
+  Accordion Title
+</a>
+<div id="accordion-example">
+  Accordion Content
+  <a class="js-accordion-close" data-trigger="#accordion-example"><!-- here! -->
+    close
+  </a>
+</div>
+        </code></pre>
+      </section>
+      <section>
+        <h5 class="u-mt30">Options</h5>
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th>Parameter</th>
+              <th>Example</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>trigger</td>
+              <td>data-trigger="#hoge"</td>
+              <td>(none)</td>
+              <td>
+                <p>
+                  Set selector of accordion trigger element to open and close.<br>
+                </p>
+                <p class="text-danger">
+                  This is <strong>required</strong> item. You have to set this parameter.
+                </p>
+                <p class="text-danger">
+                  <label>NG pattern:</label> <span>data-target="hoge"</span>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>ignore</td>
+              <td>data-ignore=".hoge"</td>
+              <td>(none)</td>
+              <td>
+                Use this, if you set block not to close in trigger block.
+              </td>
+            </tr>
+          </table>
+        </div>
+      </section>
     </section>
   </section>
   <section>
     <h4 class="u-mt30">JavaScript</h4>
     <p>Please add below script into the script file loaded commonly.</p>
-    <section>
-      <h5 class="u-mt20"><a class="js-accordion u-ml10 u-fw-nml" data-target="#code-section-main-js">view source</a></h5>
-      <section class="accordion-content-block" id="code-section-main-js">
-        <small>Quoted from <a href="accordion.js" target="_blank">accordion.js</a></small>
-        <pre><code class="javascript" id="main-script"></code></pre>
-      </section>
-    </section>
+    <p><a href="../src/js/EasyAccordion.js" target="_blank">view source</a></p>
   </section>
   <section>
     <h4 class="u-mt30">CSS</h4>
     <p><code>_state-active</code> class is added trigger and content block at open.</p>
-    <p>Please define styles for them.</p>
+    <p>
+      This library dosen't provide styles.<br>
+      <span class="text-danger">You have to define styles for them.</span>
+    </p>
   </section>
 </section>
 </div>
@@ -400,18 +458,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-</script>
-<script>
-var xhr = new XMLHttpRequest();
-xhr.open('GET', '../src/js/EasyAccordion.js', true);
-xhr.onload = function() {
-  if (xhr.status >= 200 && xhr.status < 400) {
-    var $el = document.getElementById('main-script');
-    $el.innerText = xhr.response.replace(/\/\/.+/g, '');
-    hljs.highlightBlock($el);
-  }
-};
-xhr.send();
 </script>
 <script src="../dist/js/EasyAccordion.js"></script>
 <script>
