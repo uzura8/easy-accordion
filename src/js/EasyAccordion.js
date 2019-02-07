@@ -95,20 +95,18 @@ const EasyAccordion = {
         return;
       }
     }
-    const toggleTriggerSelector = $trigger.dataset.toggle_selector !== undefined ?
-      $trigger.dataset.toggle_selector : '.js-accordion';
-    const toggleTriggers = $scope.querySelectorAll(toggleTriggerSelector);
-    if (toggleTriggers === null || !toggleTriggers.length) return;
-    for (let i = 0, n = toggleTriggers.length; i < n; i++) {
-      let $toggleTrigger = toggleTriggers[i];
-      $toggleTrigger.classList.remove(activeClass);
 
-      let targetSelector = $toggleTrigger.dataset.target;
-      let $target = targetSelector !== undefined ?
-        $scope.querySelector(targetSelector) : $toggleTrigger.nextElementSibling;
-      if ($target === null) continue;
-      $target.classList.remove(activeClass);
-    }
+    const toggleTriggerSelector = $trigger.dataset.trigger;
+    if (toggleTriggerSelector === undefined  || !toggleTriggerSelector) return;
+    const $toggleTrigger = $scope.querySelector(toggleTriggerSelector);
+    if ($toggleTrigger === undefined) return;
+    $toggleTrigger.classList.remove(activeClass);
+
+    const targetSelector = $toggleTrigger.dataset.target;
+    const $target = targetSelector !== undefined ?
+      $scope.querySelector(targetSelector) : $toggleTrigger.nextElementSibling;
+    if ($target === null) return;
+    $target.classList.remove(activeClass);
   },
   closest: function(node, searchSelector, scopeElm) {
     if (searchSelector === null || !searchSelector) return null;

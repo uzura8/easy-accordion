@@ -45,7 +45,7 @@
     </ul>
   </li>
   <li>
-    <a class="js-accordion accordion-header">
+    <a class="js-accordion accordion-header" id="simple-toggle-3">
       <label>Accordion3</label>
       <div class="accordion-icon"><span></span><span></span></div>
     </a>
@@ -55,7 +55,7 @@
         <li>BBBBBB</li>
         <li>CCCCC</li>
       </ul>
-      <a class="js-accordion-close">Close</a>
+      <a class="js-accordion-close" data-trigger="#simple-toggle-3">Close</a>
     </div>
   </li>
 </ul>
@@ -183,7 +183,7 @@
           <li>BBBBBB</li>
           <li>CCCCC</li>
         </ul>
-        <a class="js-accordion accordion-header" data-group=".accordion-group-child">
+        <a class="js-accordion accordion-header" data-group=".accordion-group-child" id="nested-toggle-1-2">
           <label>Accordion1-2</label>
           <div class="accordion-icon"><span></span><span></span></div>
         </a>
@@ -193,7 +193,7 @@
             <li>BBBBBB</li>
             <li>CCCCC</li>
           </ul>
-          <a class="js-accordion-close">Close</a>
+          <a class="js-accordion-close" data-trigger="#nested-toggle-1-2">Close</a>
         </div>
         <a class="js-accordion accordion-header" data-group=".accordion-group-child">
           <label>Accordion1-3</label>
@@ -243,16 +243,19 @@
   <section id="demo-modal" class="u-mt20">
 <section id="accordion-modal">
   <a class="js-accordion"
+    id="modal-toggle"
     data-target="#modal1"
     data-content_class="modal-block">Modal Open</a>
   <div id="modal1" class="modal-block">
-    <div class="modal-block-inner js-accordion-close" data-ignore_selector=".modal-block-content">
+    <div class="modal-block-inner js-accordion-close"
+      data-trigger="#modal-toggle"
+      data-ignore_selector=".modal-block-content">
       <div class="modal-block-content">
         <h4>Modal title</h4>
         <section>
           <p>Modal contet.</p>
         </section>
-        <a class="js-accordion-close">Close</a>
+        <a class="js-accordion-close" data-trigger="#modal-toggle">Close</a>
       </div>
     </div>
   </div>

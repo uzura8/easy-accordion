@@ -107,20 +107,18 @@
           return;
         }
       }
-      var toggleTriggerSelector = $trigger.dataset.toggle_selector !== undefined ?
-        $trigger.dataset.toggle_selector : '.js-accordion';
-      var toggleTriggers = $scope.querySelectorAll(toggleTriggerSelector);
-      if (toggleTriggers === null || !toggleTriggers.length) { return; }
-      for (var i = 0, n = toggleTriggers.length; i < n; i++) {
-        var $toggleTrigger = toggleTriggers[i];
-        $toggleTrigger.classList.remove(activeClass);
 
-        var targetSelector = $toggleTrigger.dataset.target;
-        var $target = targetSelector !== undefined ?
-          $scope.querySelector(targetSelector) : $toggleTrigger.nextElementSibling;
-        if ($target === null) { continue; }
-        $target.classList.remove(activeClass);
-      }
+      var toggleTriggerSelector = $trigger.dataset.trigger;
+      if (toggleTriggerSelector === undefined  || !toggleTriggerSelector) { return; }
+      var $toggleTrigger = $scope.querySelector(toggleTriggerSelector);
+      if ($toggleTrigger === undefined) { return; }
+      $toggleTrigger.classList.remove(activeClass);
+
+      var targetSelector = $toggleTrigger.dataset.target;
+      var $target = targetSelector !== undefined ?
+        $scope.querySelector(targetSelector) : $toggleTrigger.nextElementSibling;
+      if ($target === null) { return; }
+      $target.classList.remove(activeClass);
     },
     closest: function(node, searchSelector, scopeElm) {
       if (searchSelector === null || !searchSelector) { return null; }
