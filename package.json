@@ -1,6 +1,6 @@
 {
   "name": "easy-accordion",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Easy Accordion not depended on a specific JavaScript library.",
   "main": "EasyAccordion.js",
   "scripts": {
