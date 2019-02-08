@@ -62,7 +62,7 @@
       var $scope = this.scopeElm;
       var $trigger = this.eventElm;
       var activeClass = $trigger.dataset.active_class !== undefined ?
-        $trigger.dataset.active_class : '_state-active';
+        $trigger.dataset.active_class : 'is-active';
       var contentClass = $trigger.dataset.content_class !== undefined ?
         $trigger.dataset.content_class : 'accordion-content';
       var isScroll = $trigger.dataset.scroll === "1" ?
@@ -108,7 +108,7 @@
       var $trigger = this.eventElm;
       var $eventTarget = event.target;
       var activeClass = $trigger.dataset.active_class !== undefined ?
-        $trigger.dataset.active_class : '_state-active';
+        $trigger.dataset.active_class : 'is-active';
       var ignoreSelector = $trigger.dataset.ignore;
       if (ignoreSelector && $eventTarget != $trigger) {
         if (EasyAccordion.closest($eventTarget, ignoreSelector, $scope) !== null) {
@@ -135,7 +135,7 @@
       var selectedValue = $trigger.options[selectedIndex].value;
 
       var activeClass = $trigger.dataset.active_class !== undefined ?
-        $trigger.dataset.active_class : '_state-active';
+        $trigger.dataset.active_class : 'is-active';
       var contentClass = $trigger.dataset.content_class !== undefined ?
         $trigger.dataset.content_class : 'accordion-content';
       var groupSelector = $trigger.dataset.group !== undefined ?

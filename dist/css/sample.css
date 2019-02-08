@@ -17,7 +17,7 @@
   opacity: 0;
   transition: all .5s ease;
 }
-.accordion-content._state-active {
+.accordion-content.is-active {
   max-height: 500px;
   opacity: 1;
 }
@@ -50,17 +50,17 @@
   top: 5px;
 	transform: rotate(90deg);
 }
-.js-accordion._state-active .accordion-icon span:nth-of-type(1) {
+.js-accordion.is-active .accordion-icon span:nth-of-type(1) {
 	display:none;
 }
-.js-accordion._state-active span:nth-of-type(2) {
+.js-accordion.is-active span:nth-of-type(2) {
 	top: 5px;
 	transform: rotate(180deg);
 }
 .accordion-content-block {
   display: none;
 }
-.accordion-content-block._state-active {
+.accordion-content-block.is-active {
   display: block;
 }
 
@@ -83,7 +83,7 @@
   height: 100%;
   background: rgba(102, 102, 102, 0.9);
 }
-.modal-block._state-active {
+.modal-block.is-active {
   display: block;
 }
 .modal-block-inner {
