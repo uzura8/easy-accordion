@@ -14,10 +14,16 @@ On production use files (JS and CSS) only from `dist/` folder, there will be the
 
 ### Development Build
 
-Uses `npm` to build.  
-Install all dependencies, in repo's root:
+Install all dependencies, in repo's root by `npm`:
 
 ```
 $ npm install
+
+```
+
+And build by rollup.js:
+
+```
+$ npm run build
 ```
 
