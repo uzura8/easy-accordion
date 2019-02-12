@@ -65,7 +65,7 @@
         $trigger.dataset.active_class : 'is-active';
       var contentClass = $trigger.dataset.content_class !== undefined ?
         $trigger.dataset.content_class : 'accordion-content';
-      var isScroll = $trigger.dataset.scroll === "1" ?
+      var isScroll = $trigger.dataset.scroll === '1' ?
         $trigger.dataset.scroll : false;
       var groupSelector = $trigger.dataset.group !== undefined ?
         $trigger.dataset.group : '';
@@ -104,7 +104,6 @@
     },
     closeAccordion: function(event) {
       var $scope = this.scopeElm;
-      var closeTriggerSelector = this.triggerSelector;
       var $trigger = this.eventElm;
       var $eventTarget = event.target;
       var activeClass = $trigger.dataset.active_class !== undefined ?
@@ -128,7 +127,7 @@
       if ($target === null) { return; }
       $target.classList.remove(activeClass);
     },
-    selectAccordion: function(event) {
+    selectAccordion: function() {
       var $scope = this.scopeElm;
       var $trigger = this.eventElm;
       var selectedIndex = $trigger.selectedIndex;
