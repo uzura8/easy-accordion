@@ -53,7 +53,7 @@ const EasyAccordion = {
       $trigger.dataset.active_class : 'is-active';
     const contentClass = $trigger.dataset.content_class !== undefined ?
       $trigger.dataset.content_class : 'accordion-content';
-    const isScroll = $trigger.dataset.scroll === "1" ?
+    const isScroll = $trigger.dataset.scroll === '1' ?
       $trigger.dataset.scroll : false;
     const groupSelector = $trigger.dataset.group !== undefined ?
       $trigger.dataset.group : '';
@@ -92,7 +92,6 @@ const EasyAccordion = {
   },
   closeAccordion: function(event) {
     const $scope = this.scopeElm;
-    const closeTriggerSelector = this.triggerSelector;
     const $trigger = this.eventElm;
     const $eventTarget = event.target;
     const activeClass = $trigger.dataset.active_class !== undefined ?
@@ -116,7 +115,7 @@ const EasyAccordion = {
     if ($target === null) return;
     $target.classList.remove(activeClass);
   },
-  selectAccordion: function(event) {
+  selectAccordion: function() {
     const $scope = this.scopeElm;
     const $trigger = this.eventElm;
     const selectedIndex = $trigger.selectedIndex;
