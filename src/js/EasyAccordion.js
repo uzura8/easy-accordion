@@ -154,8 +154,14 @@ const EasyAccordion = {
   closest: function(node, searchSelector, scopeElm) {
     if (searchSelector === null || !searchSelector) return null;
     if (scopeElm === null) scopeElm = document;
+
+    const isIE = node.matches == null
     while(node !== null && node != scopeElm) {
-      if (node.matches(searchSelector)) return node;
+      if (isIE) {
+        if (node.msMatchesSelector(searchSelector)) return node;
+      } else {
+        if (node.matches(searchSelector)) return node;
+      }
       node = node.parentElement || node.parentNode;
     }
     return null;
