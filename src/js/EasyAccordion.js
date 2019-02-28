@@ -19,47 +19,46 @@ const EasyAccordion = {
   init: function(scopeElm, options = {}) {
     if (scopeElm === undefined) scopeElm = document;
 
-    const toggleSelector = options.toggleSelector != null ?
+    const toggleSelector = (options.toggleSelector !== undefined) ?
       options.toggleSelector : '.js-accordion';
     this.handleEvent(scopeElm, toggleSelector, 'click', this.toggleAccordion);
 
-    const closeSelector = options.closeSelector != null ?
+    const closeSelector = (options.closeSelector !== undefined) ?
       options.closeSelector : '.js-accordion-close';
     this.handleEvent(scopeElm, closeSelector, 'click', this.closeAccordion);
 
-    const selectSelector = options.selectSelector != null ?
+    const selectSelector = (options.selectSelector !== undefined) ?
       options.selectSelector : '.js-accordion-select';
     this.handleEvent(scopeElm, selectSelector, 'change', this.selectAccordion);
   },
   destroy: function(scopeElm, options = {}) {
     if (scopeElm === undefined) scopeElm = document;
 
-    const toggleSelector = options.toggleSelector != null ?
+    const toggleSelector = (options.toggleSelector !== undefined) ?
       options.toggleSelector : '.js-accordion';
     this.handleEvent(scopeElm, toggleSelector, 'click', this.toggleAccordion, true);
 
-    const closeSelector = options.closeSelector != null ?
+    const closeSelector = (options.closeSelector !== undefined) ?
       options.closeSelector : '.js-accordion-close';
     this.handleEvent(scopeElm, closeSelector, 'click', this.closeAccordion, true);
 
-    const selectSelector = options.selectSelector != null ?
+    const selectSelector = (options.selectSelector !== undefined) ?
       options.selectSelector : '.js-accordion-select';
     this.handleEvent(scopeElm, selectSelector, 'change', this.selectAccordion, true);
   },
   toggleAccordion: function() {
     const $scope = this.scopeElm;
     const $trigger = this.eventElm;
-    const activeClass = $trigger.dataset.active_class != null ?
+    const activeClass = $trigger.dataset.active_class !== undefined ?
       $trigger.dataset.active_class : 'is-active';
-    const contentClass = $trigger.dataset.content_class != null ?
+    const contentClass = $trigger.dataset.content_class !== undefined ?
       $trigger.dataset.content_class : 'accordion-content';
     const isScroll = $trigger.dataset.scroll === '1' ?
       $trigger.dataset.scroll : false;
-    const groupSelector = $trigger.dataset.group != null ?
+    const groupSelector = $trigger.dataset.group !== undefined ?
       $trigger.dataset.group : '';
-    const targetSelector = $trigger.dataset.target != null ?
-      $trigger.dataset.target : '';
-    const $target = targetSelector ?
+    const targetSelector = $trigger.dataset.target;
+    const $target = targetSelector !== undefined ?
       $scope.querySelector(targetSelector) : $trigger.nextElementSibling;
     const toOpen = !$target.classList.contains(activeClass);
 
@@ -95,7 +94,7 @@ const EasyAccordion = {
     const $scope = this.scopeElm;
     const $trigger = this.eventElm;
     const $eventTarget = event.target;
-    const activeClass = $trigger.dataset.active_class != null ?
+    const activeClass = $trigger.dataset.active_class !== undefined ?
       $trigger.dataset.active_class : 'is-active';
     const ignoreSelector = $trigger.dataset.ignore;
     if (ignoreSelector && $eventTarget != $trigger) {
@@ -110,11 +109,10 @@ const EasyAccordion = {
     if ($toggleTrigger === undefined) return;
     $toggleTrigger.classList.remove(activeClass);
 
-    const targetSelector = $toggleTrigger.dataset.target != null ?
-      $toggleTrigger.dataset.target : '';
-    const $target = targetSelector ?
+    const targetSelector = $toggleTrigger.dataset.target;
+    const $target = targetSelector !== undefined ?
       $scope.querySelector(targetSelector) : $toggleTrigger.nextElementSibling;
-    if ($target == null) return;
+    if ($target === null) return;
     $target.classList.remove(activeClass);
   },
   selectAccordion: function() {
@@ -123,11 +121,11 @@ const EasyAccordion = {
     const selectedIndex = $trigger.selectedIndex;
     const selectedValue = $trigger.options[selectedIndex].value;
 
-    const activeClass = $trigger.dataset.active_class != null ?
+    const activeClass = $trigger.dataset.active_class !== undefined ?
       $trigger.dataset.active_class : 'is-active';
-    const contentClass = $trigger.dataset.content_class != null ?
+    const contentClass = $trigger.dataset.content_class !== undefined ?
       $trigger.dataset.content_class : 'accordion-content';
-    const groupSelector = $trigger.dataset.group != null ?
+    const groupSelector = $trigger.dataset.group !== undefined ?
       $trigger.dataset.group : '';
 
     var toOpen = false;

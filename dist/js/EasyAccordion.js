@@ -29,15 +29,15 @@
 
       if (scopeElm === undefined) { scopeElm = document; }
 
-      var toggleSelector = options.toggleSelector != null ?
+      var toggleSelector = (options.toggleSelector !== undefined) ?
         options.toggleSelector : '.js-accordion';
       this.handleEvent(scopeElm, toggleSelector, 'click', this.toggleAccordion);
 
-      var closeSelector = options.closeSelector != null ?
+      var closeSelector = (options.closeSelector !== undefined) ?
         options.closeSelector : '.js-accordion-close';
       this.handleEvent(scopeElm, closeSelector, 'click', this.closeAccordion);
 
-      var selectSelector = options.selectSelector != null ?
+      var selectSelector = (options.selectSelector !== undefined) ?
         options.selectSelector : '.js-accordion-select';
       this.handleEvent(scopeElm, selectSelector, 'change', this.selectAccordion);
     },
@@ -46,32 +46,31 @@
 
       if (scopeElm === undefined) { scopeElm = document; }
 
-      var toggleSelector = options.toggleSelector != null ?
+      var toggleSelector = (options.toggleSelector !== undefined) ?
         options.toggleSelector : '.js-accordion';
       this.handleEvent(scopeElm, toggleSelector, 'click', this.toggleAccordion, true);
 
-      var closeSelector = options.closeSelector != null ?
+      var closeSelector = (options.closeSelector !== undefined) ?
         options.closeSelector : '.js-accordion-close';
       this.handleEvent(scopeElm, closeSelector, 'click', this.closeAccordion, true);
 
-      var selectSelector = options.selectSelector != null ?
+      var selectSelector = (options.selectSelector !== undefined) ?
         options.selectSelector : '.js-accordion-select';
       this.handleEvent(scopeElm, selectSelector, 'change', this.selectAccordion, true);
     },
     toggleAccordion: function() {
       var $scope = this.scopeElm;
       var $trigger = this.eventElm;
-      var activeClass = $trigger.dataset.active_class != null ?
+      var activeClass = $trigger.dataset.active_class !== undefined ?
         $trigger.dataset.active_class : 'is-active';
-      var contentClass = $trigger.dataset.content_class != null ?
+      var contentClass = $trigger.dataset.content_class !== undefined ?
         $trigger.dataset.content_class : 'accordion-content';
       var isScroll = $trigger.dataset.scroll === '1' ?
         $trigger.dataset.scroll : false;
-      var groupSelector = $trigger.dataset.group != null ?
+      var groupSelector = $trigger.dataset.group !== undefined ?
         $trigger.dataset.group : '';
-      var targetSelector = $trigger.dataset.target != null ?
-        $trigger.dataset.target : '';
-      var $target = targetSelector ?
+      var targetSelector = $trigger.dataset.target;
+      var $target = targetSelector !== undefined ?
         $scope.querySelector(targetSelector) : $trigger.nextElementSibling;
       var toOpen = !$target.classList.contains(activeClass);
 
@@ -107,7 +106,7 @@
       var $scope = this.scopeElm;
       var $trigger = this.eventElm;
       var $eventTarget = event.target;
-      var activeClass = $trigger.dataset.active_class != null ?
+      var activeClass = $trigger.dataset.active_class !== undefined ?
         $trigger.dataset.active_class : 'is-active';
       var ignoreSelector = $trigger.dataset.ignore;
       if (ignoreSelector && $eventTarget != $trigger) {
@@ -122,11 +121,10 @@
       if ($toggleTrigger === undefined) { return; }
       $toggleTrigger.classList.remove(activeClass);
 
-      var targetSelector = $toggleTrigger.dataset.target != null ?
-        $toggleTrigger.dataset.target : '';
-      var $target = targetSelector ?
+      var targetSelector = $toggleTrigger.dataset.target;
+      var $target = targetSelector !== undefined ?
         $scope.querySelector(targetSelector) : $toggleTrigger.nextElementSibling;
-      if ($target == null) { return; }
+      if ($target === null) { return; }
       $target.classList.remove(activeClass);
     },
     selectAccordion: function() {
@@ -135,11 +133,11 @@
       var selectedIndex = $trigger.selectedIndex;
       var selectedValue = $trigger.options[selectedIndex].value;
 
-      var activeClass = $trigger.dataset.active_class != null ?
+      var activeClass = $trigger.dataset.active_class !== undefined ?
         $trigger.dataset.active_class : 'is-active';
-      var contentClass = $trigger.dataset.content_class != null ?
+      var contentClass = $trigger.dataset.content_class !== undefined ?
         $trigger.dataset.content_class : 'accordion-content';
-      var groupSelector = $trigger.dataset.group != null ?
+      var groupSelector = $trigger.dataset.group !== undefined ?
         $trigger.dataset.group : '';
 
       var toOpen = false;
