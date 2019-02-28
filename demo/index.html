@@ -371,7 +371,7 @@
 <!-- is-active class added here at open -->
   Accordion Content
 </div>
-        </code></pre>
+        </div>
       </section>
       <section>
         <h5 class="u-mt30">Options</h5>
@@ -465,7 +465,7 @@
     close
   </a>
 </div>
-        </code></pre>
+        </div>
       </section>
       <section>
         <h5 class="u-mt30">Options</h5>
@@ -568,8 +568,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var $code = Array.prototype.slice.call(document.querySelectorAll('.js-code'), 0);
   if ($code.length > 0) {
     $code.forEach(function ($el) {
+      if ($el.dataset.target == null)  return;
       var targetId = $el.dataset.target;
-      if (!targetId)  return;
       var $targetEl = document.getElementById(targetId);
       if ($targetEl === undefined || $targetEl === null) return;
       $el.innerText = $targetEl.innerHTML.replace(/\s*style=".+"/g, '').trim();
