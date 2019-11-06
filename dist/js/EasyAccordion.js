@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, global.EasyAccordion = factory());
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   var EasyAccordion = {
     handleEvent: function(scopeElm, triggerSelector, type, func, isRemove) {
@@ -108,6 +108,8 @@
       var $eventTarget = event.target;
       var activeClass = $trigger.dataset.active_class !== undefined ?
         $trigger.dataset.active_class : 'is-active';
+      var isScroll = $trigger.dataset.scroll === '1' ?
+        $trigger.dataset.scroll : false;
       var ignoreSelector = $trigger.dataset.ignore;
       if (ignoreSelector && $eventTarget != $trigger) {
         if (EasyAccordion.closest($eventTarget, ignoreSelector, $scope) !== null) {
@@ -126,6 +128,15 @@
         $scope.querySelector(targetSelector) : $toggleTrigger.nextElementSibling;
       if ($target === null) { return; }
       $target.classList.remove(activeClass);
+
+      if (isScroll) {
+        (function (targetElm) {
+          var targetPosY = targetElm.getBoundingClientRect().top;
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          var targetTop = targetPosY + scrollTop;
+          window.scrollTo(0, targetTop);
+        })($toggleTrigger);
+      }
     },
     selectAccordion: function() {
       var $scope = this.scopeElm;
@@ -182,4 +193,4 @@
 
   return EasyAccordion;
 
-}));
+})));

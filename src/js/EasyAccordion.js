@@ -96,6 +96,8 @@ const EasyAccordion = {
     const $eventTarget = event.target;
     const activeClass = $trigger.dataset.active_class !== undefined ?
       $trigger.dataset.active_class : 'is-active';
+    const isScroll = $trigger.dataset.scroll === '1' ?
+      $trigger.dataset.scroll : false;
     const ignoreSelector = $trigger.dataset.ignore;
     if (ignoreSelector && $eventTarget != $trigger) {
       if (EasyAccordion.closest($eventTarget, ignoreSelector, $scope) !== null) {
@@ -114,6 +116,15 @@ const EasyAccordion = {
       $scope.querySelector(targetSelector) : $toggleTrigger.nextElementSibling;
     if ($target === null) return;
     $target.classList.remove(activeClass);
+
+    if (isScroll) {
+      ((targetElm) => {
+        const targetPosY = targetElm.getBoundingClientRect().top;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetTop = targetPosY + scrollTop;
+        window.scrollTo(0, targetTop);
+      })($toggleTrigger);
+    }
   },
   selectAccordion: function() {
     const $scope = this.scopeElm;
