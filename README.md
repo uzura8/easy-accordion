@@ -5,7 +5,7 @@ EasyAccordion - is easy and simple accordion UI parts.
 It dosn't depend on a specific library.
 
 ## Getting Started and Demos
-  * [Getting Started Guide and Demos](http://uzura.work/easy-accordion/demo/)
+  * [Getting Started Guide and Demos](http://labs.uzr.link/easy-accordion/demo/)
 
 ## Dist / Build
 
